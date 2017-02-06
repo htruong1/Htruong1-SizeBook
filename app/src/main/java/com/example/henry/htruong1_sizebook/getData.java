@@ -1,11 +1,13 @@
 package com.example.henry.htruong1_sizebook;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by Henry on 2017-02-02.
  */
 public class getData implements Serializable {
+    private String showString;
     private String name;
     private String date;
     private String neck;
@@ -87,4 +89,40 @@ public class getData implements Serializable {
         this.comment = comment;
     }
 
+    @Override
+    public String toString(){
+        showString =  "";
+        if(this.name!= null){
+            showString +="Name: "+this.name;
+        }
+        if(this.date!=null){
+            showString +="\nDate:";
+            String date = this.date;
+            date.replace("/","-");
+            showString += date;
+
+        }
+        if(this.neck!=null) {
+            showString +="\nNeck: "+this.neck;
+        }
+        if(this.bust!=null) {
+            showString +="\nBust: "+this.bust;
+        }
+        if(this.chest!=null){
+            showString+="\nChest: " +this.chest;
+        }
+        if(this.waist!=null){
+            showString+="\nWaist: " + this.waist;
+        }
+        if(this.hip != null){
+            showString += "\nHip: "  + this.hip;
+        }
+        if(this.inseam != null){
+            showString += "\nInseam: " + this.inseam;
+        }
+        if(this.comment != null){
+            showString += "\nComment: " + this.comment;
+        }
+        return showString;
+    }
 }
