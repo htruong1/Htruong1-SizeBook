@@ -88,39 +88,41 @@ public class getData implements Serializable {
     public void setComment(String comment) {
         this.comment = comment;
     }
-
+    //* This section of the code fetches the user input if any and returns the data
+    //as sections*/
     @Override
     public String toString(){
         showString =  "";
-        if(this.name!= null){
+
+        if(this.name!= ""){
             showString +="Name: "+this.name;
         }
-        if(this.date!=null){
+        if(this.date!=""){
             showString +="\nDate:";
             String date = this.date;
             date.replace("/","-");
             showString += date;
 
         }
-        if(this.neck!=null) {
+        if(this.neck!=  "") {
             showString +="\nNeck: "+this.neck;
         }
-        if(this.bust!=null) {
+        if(this.bust!="") {
             showString +="\nBust: "+this.bust;
         }
-        if(this.chest!=null){
+        if(this.chest!=""){
             showString+="\nChest: " +this.chest;
         }
-        if(this.waist!=null){
+        if(this.waist!=""){
             showString+="\nWaist: " + this.waist;
         }
-        if(this.hip != null){
+        if(this.hip != ""){
             showString += "\nHip: "  + this.hip;
         }
-        if(this.inseam != null){
+        if(this.inseam != ""){
             showString += "\nInseam: " + this.inseam;
         }
-        if(this.comment != null){
+        if(this.comment != ""){
             showString += "\nComment: " + this.comment;
         }
         return showString;

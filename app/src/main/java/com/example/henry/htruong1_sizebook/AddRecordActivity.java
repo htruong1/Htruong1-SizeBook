@@ -35,12 +35,8 @@ import static java.io.FileDescriptor.out;
 public class AddRecordActivity extends AppCompatActivity {
     private static final String FILENAME = "save.sav";
     FileOutputStream outputStream;
-// fixes the nullpointer error
-// http://stackoverflow.com/questions/28409089/nullpointerexception-when-adding
-// -an-object-to-arraylist-in-android
     private ArrayList<getData> peopleList ;//= new ArrayList<getData>();
 
-    //private ArrayAdapter<getData> adapter;
 
 
     private EditText nameInfo;
@@ -53,16 +49,16 @@ public class AddRecordActivity extends AppCompatActivity {
     private EditText inseamInfo;
     private EditText commentInfo;
     private getData entry;
-    private Integer pos;
+
     @Override
     //*Finds the information from the EditText Boxes */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_record);
-       // peopleList.add(null);
+
         Intent intent = getIntent();
-       // Button saveButton = (Button) findViewById(R.id.save);
-       // pos = getIntent.getIntExtra("posOfEntry",0);
+
+
         loadFromFile();
         nameInfo = (EditText) findViewById(R.id.nameText);
         dateInfo = (EditText) findViewById(R.id.dateText);
@@ -98,24 +94,6 @@ public class AddRecordActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
                 dataInput(Name,Date,Neck,Bust,Chest,Waist,Hip,Inseam,Comment);
-                //person individual = new person(Name, Date, Neck, Bust, Chest, Waist, Hip, Inseam, Comment);
-               // adapter.notifyDataSetChanged();
-               /* person = new getData();
-                person.setName(Name);
-                person.setDate(Date);
-                person.setNeck(Neck);
-                person.setBust(Bust);
-                person.setChest(Chest);
-                person.setWaist(Waist);
-                person.setHip(Hip);
-                person.setInseam(Inseam);
-                person.setComment(Comment);
-                peopleList.add(person);*/
-
-               /* saveInFile();
-               // loadFile();
-                finish();*/
-
 
 
             }

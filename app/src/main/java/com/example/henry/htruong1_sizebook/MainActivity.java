@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 
@@ -24,7 +25,10 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
+
 //*Main Activity that starts when app is first loaded */
 public class MainActivity extends AppCompatActivity {
     private static final String FILENAME = "save.sav";
@@ -36,14 +40,34 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         records = (ListView) findViewById(R.id.viewList);
+       ListAdapter recordAdapter = new ArrayAdapter<getData>(this,
+                android.R.layout.simple_list_item_1, peopleList);
+// taken from https://teamtreehouse.com/community/-intent-intent-getintent-mfuellevel-intentgetstringextrafuellevel-which-is-not-correct
+        records.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int index, long id) {
 
-    }
+                        Intent intent = new Intent(view.getContext(),manageActivity.class);
+                        intent.putExtra("index_pos",index);
+                        startActivity(intent);
+                       
+                    }
+                }
+        );
+    };
+            //getting array position code https://teamtreehouse.com/community/how-can-i-open-a-new-activity-when-an-item-is-clicked-on-in-the-listvie
+                //comments suggeested intents can pass off values
+
+
+
     //*When the add button is clicked, starts the add record activity to add information*/
     public void addRecord(View view) {
         Intent intent = new Intent(this, AddRecordActivity.class);
         startActivity(intent);
 
     }
+
     //*This class updates the list of items on the mainActivity scren */
     public void updateScreen(ArrayList<getData> peopleList){
         records = (ListView) findViewById(R.id.viewList);
@@ -63,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
        // adapter = new ArrayAdapter<getData>(this, R.layout.list_person, peopleList);
 //        records.setAdapter(adapter);
     }
+
     //*Function that loads any file internally for viewing*?
     private void loadFromFile() {
         try {
